@@ -61,8 +61,43 @@ const movies = [
   },
 ];
 
-// create showMovies function
+// Task 1
+// Create a function called "showMovies" that
+// - iterates through the "movies" array and
+// - for each movie, it creates a <p> element with the movie title and director and append it to the #all-movies div.
+// - it sets the innerText of the #movies-number element to the total number of the movies in the array "movies"
 
+function showMovies (movies) {
+  let moviesList =  document.querySelector("#all-movies");
+  movies.forEach((movies) => {
+    let totalMovies = document.querySelector("#movies-number");
+    totalMovies.innerText = movies.length;
+    let movieTitle = document.createElement ("p");
+     moviesList.appendChild(movieTitle);
+     movieTitle.innerText = `${movies.title}, directed by ${movies.director}.`;
+  });
+
+}
+
+showMovies(movies);
+
+//Task 2
 // create a new movie object for your favorite movie
+
+let newMov = {
+  title: "Jurassic Park",
+  director : "Steven Spielberg",
+  type: "Science Fiction",
+  haveWatched: true,
+}
+
+function addMovie(movie, callback) {
+  setTimeout(() => {
+    movies.push(movie);
+    callback(movies);
+  }, 2000);
+}
+
+addMovie(newMov, showMovies);
 
 // create addMovies function
